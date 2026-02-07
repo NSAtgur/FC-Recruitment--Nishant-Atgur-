@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Student Attendance System{% endblock %}</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f6f8;
+        }
+
+        /* Navbar (shown only when logged in) */
+        nav {
+            background: #111827;
+            padding: 14px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        nav .logo {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: #e5e7eb;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #60a5fa;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            margin-top: 0;
+            color: #111827;
+        }
+
+        input, button, select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 6px;
+            border: 1px solid #d1d5db;
+            font-size: 15px;
+        }
+
+        button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1e40af;
+        }
+
+        .flash {
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+        }
+
+        .card {
+            background: #f9fafb;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar ONLY if user is logged in -->
+{% if session.get('username') %}
+<nav>
+    <div class="logo">🎓 Attendance System</div>
+    <div>
+        <a href="{{ url_for('students.dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('auth.logout') }}">Logout</a>
+    </div>
+</nav>
+{% endif %}
+
+<div class="container">
+
+    <!-- Flash messages (fixed, responsive, works on mobile) -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div style="
+                background-color: #fee;
+                color: #900;
+                padding: 12px 15px;
+                border-radius: 6px;
+                margin: 10px auto 20px auto;
+                max-width: 95%;
+                word-wrap: break-word;
+                box-sizing: border-box;
+            ">
+                {% for message in messages %}
+                    <p style="margin:0;">{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+
+</div>
+
+</body>
+</html>

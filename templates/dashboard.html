@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Student Attendance System{% endblock %}
+
+{% block content %}
+
+<div style="
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+">
+    <div style="width:100%; max-width:1000px;">
+
+        <h1 style="text-align:center; margin-bottom:30px;">
+            Dashboard
+        </h1>
+
+        <div style="
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        ">
+
+            <div class="card">
+                <h3>Add Student</h3>
+                <p>Register a new student in the system.</p>
+                <a href="{{ url_for('students.add_students') }}"
+                    style="display:block; text-align:center; margin-top:10px;
+                        padding:10px; background:#2563eb; color:white;
+                        border-radius:6px; text-decoration:none;">
+                    Go
+                </a>
+            </div>
+
+            <div class="card">
+                <h3>View Students</h3>
+                <p>View all registered students.</p>
+                <a href="{{ url_for('students.view_students') }}"
+                    style="display:block; text-align:center; margin-top:10px;
+                        padding:10px; background:#2563eb; color:white;
+                        border-radius:6px; text-decoration:none;">
+                    Go
+                </a>
+            </div>
+
+            <div class="card">
+                <h3>Mark Attendance</h3>
+                <p>Record attendance for students.</p>
+                <a href="{{ url_for('students.mark_attendance') }}"
+                    style="display:block; text-align:center; margin-top:10px;
+                        padding:10px; background:#2563eb; color:white;
+                        border-radius:6px; text-decoration:none;">
+                    Go
+                </a>
+            </div>
+
+            <div class="card">
+                <h3>View Attendance</h3>
+                <p>See attendance history for students.</p>
+                <a href="{{ url_for('students.view_attendance') }}"
+                    style="display:block; text-align:center; margin-top:10px;
+                        padding:10px; background:#2563eb; color:white;
+                        border-radius:6px; text-decoration:none;">
+                    Go
+                </a>
+            </div>
+
+            <div class="card">
+                <h3>Edit Student</h3>
+                <p>Update student information.</p>
+                <a href="{{ url_for('students.edit_student') }}"
+                    style="display:block; text-align:center; margin-top:10px;
+                        padding:10px; background:#2563eb; color:white;
+                        border-radius:6px; text-decoration:none;">
+                    Go
+                </a>
+            </div>
+
+            <div class="card">
+                <h3>Delete Student</h3>
+                <p>Remove a student from the system.</p>
+                <a href="{{ url_for('students.delete_student') }}"
+                    style="display:block; text-align:center; margin-top:10px;
+                        padding:10px; background:#dc2626; color:white;
+                        border-radius:6px; text-decoration:none;">
+                    Go
+                </a>
+            </div>
+            <div class="card">
+                <h3>Audit Logs</h3>
+                <p>View admin activity history.</p>
+                <a href="{{ url_for('students.audit_log') }}"
+                style="display:block; text-align:center; margin-top:10px;
+                    padding:10px; background:#374151; color:white;
+                    border-radius:6px; text-decoration:none;">
+                View
+                </a>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
